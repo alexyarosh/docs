@@ -1,4 +1,4 @@
-/stable---
+---
 title: Restore Data from a Backup
 summary: Restore a table or database from a backup in CockroachCloud.
 toc: true
@@ -85,9 +85,21 @@ To restore a database:
 
     The **Restore database** module displays with backup details.
 
-1. Before you start the restore, [resolve any naming conflicts](#resolve-a-database-naming-conflict).
+1. In the **Restore to** field, enter the name of the destination database.
 
-1. Click **Restore**.
+    {{site.data.alerts.callout_info}}
+    [Resolve any naming conflicts](#resolve-a-database-naming-conflict) by using `DROP` or `RENAME` on the existing database. If you enter a unique name in the **Restore to** field, a new database will be created.
+    {{site.data.alerts.end}}  
+
+1. Select any of the **Dependency options** to skip. You can:
+
+    - **Skip missing foreign keys**, which will remove [foreign key](../stable/foreign-key.html) constraints before restoring.
+    - **Skip missing sequences**, which will ignore [sequence](../stable/show-sequences.html) dependencies (i.e., the `DEFAULT` expression that uses the sequence).
+    - **Skip missing views**, which will skip restoring [views](../stable/views.html) that cannot be restored because their dependencies are not being restored at the same time.
+
+1. Click **Continue**
+
+1. Once you have reviewed the restore details, click **Restore**.
 
    When the restore job has been created successfully, you will be taken to the **Restore Jobs** tab, which will show you the status of your restore.
 
@@ -109,9 +121,21 @@ To restore a table:
 
     The **Restore table** module displays with backup details.
 
-1. 1. Before you start the restore, [resolve any naming conflicts](#resolve-a-table-naming-conflict).
+1. In the **Restore to** field, enter the name of the destination database.
 
-1. Click **Restore**.
+    {{site.data.alerts.callout_info}}
+    [Resolve any naming conflicts](#resolve-a-table-naming-conflict) by using `DROP` or `RENAME` on the existing table. If you enter a unique name in the **Restore to** field, a new table will be created.
+    {{site.data.alerts.end}}  
+
+1. Select any of the **Dependency options** to skip. You can:
+
+    - **Skip missing foreign keys**, which will remove [foreign key](../stable/foreign-key.html) constraints before restoring.
+    - **Skip missing sequences**, which will ignore [sequence](../stable/show-sequences.html) dependencies (i.e., the `DEFAULT` expression that uses the sequence).
+    - **Skip missing views**, which will skip restoring [views](../stable/views.html) that cannot be restored because their dependencies are not being restored at the same time.
+
+1. Click **Continue**
+
+1. Once you have reviewed the restore details, click **Restore**.
 
    When the restore job has been created successfully, you will be taken to the **Restore Jobs** tab, which will show you the status of your restore.
 
